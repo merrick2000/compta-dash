@@ -1,77 +1,54 @@
 const activity = [
   {
     id: 1,
-    img: "/assets/images/users/user-1.jpg",
+    img: "Extrato bancário (Inter)",
   },
   {
     id: 2,
-    img: "/assets/images/users/user-2.jpg",
+    img: "Comprovantes de pgto dos Holerites",
   },
   {
     id: 3,
-    img: "/assets/images/users/user-3.jpg",
+    img: "Comprovante de pgto do Aluguel",
   },
   {
     id: 4,
-    img: "/assets/images/users/user-4.jpg",
+    img: "Fatura do cartão (Inter)",
   },
   {
     id: 5,
-    img: "/assets/images/users/user-5.jpg",
+    img: "Fatura Cartão (Nubank)",
   },
-  {
-    id: 6,
-    img: "/assets/images/users/user-6.jpg",
-  },
-  {
-    id: 7,
-    img: "/assets/images/users/user-1.jpg",
-  },
-  {
-    id: 6,
-    img: "/assets/images/users/user-2.jpg",
-  },
-  {
-    id: 7,
-    img: "/assets/images/users/user-3.jpg",
-  },
-  {
-    id: 8,
-    img: "/assets/images/users/user-4.jpg",
-  },
+
+  
+
 ];
 
 const RecentActivity = () => {
   return (
     <div>
+      <div className="mb-4">
+        <h3 className="text-lg font-medium "> Arquivos pendentes </h3>
+      </div>
+      <div className="h-full overflow-y-auto">
+        
       <ul className="list-item space-y-3 h-full overflow-x-auto">
         {activity.map((item, i) => (
           <li
-            className="flex items-center space-x-3 rtl:space-x-reverse border-b border-slate-100 dark:border-slate-700 last:border-b-0 pb-3 last:pb-0"
+            className="flex items-center space-x-3 rtl:space-x-reverse bg-[#E7E7E7] rounded-lg dark:border-slate-700 last:border-b-0 p-2"
             key={i}
           >
-            <div>
-              <div className="w-8 h-8 rounded-[100%]">
-                <img
-                  src={item.img}
-                  alt=""
-                  className="w-full h-full rounded-[100%] object-cover"
-                />
-              </div>
-            </div>
+           
             <div className="text-start overflow-hidden text-ellipsis whitespace-nowrap max-w-[63%]">
               <div className="text-sm text-slate-600 dark:text-slate-300 overflow-hidden text-ellipsis whitespace-nowrap">
-                Finance KPI Mobile app launch preparion meeting.
+                {item.img}
               </div>
             </div>
-            <div className="flex-1 ltr:text-right rtl:text-left">
-              <div className="text-sm font-light text-slate-400 dark:text-slate-400">
-                1 hours
-              </div>
-            </div>
+          
           </li>
         ))}
       </ul>
+    </div>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 "use client";
 import dynamic from "next/dynamic";
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 import Card from "@/components/ui/Card";
 import ImageBlock1 from "@/components/partials/widget/block/image-block-1";
 import GroupChart1 from "@/components/partials/widget/chart/group-chart-1";
@@ -10,7 +10,15 @@ import SelectMonth from "@/components/partials/SelectMonth";
 import CompanyTable from "@/components/partials/table/company-table";
 import RecentActivity from "@/components/partials/widget/recent-activity";
 import RadarChart from "@/components/partials/widget/chart/radar-chart";
-import HomeBredCurbs from "@/components/partials/HomeBredCurbs";
+import Textinput from "@/components/ui/Textinput";
+import Checkbox from "@/components/ui/Checkbox";
+import Button from "@/components/ui/Button";
+import Icon from "@/components/ui/Icon";
+import { Tab, Disclosure, Transition } from "@headlessui/react";
+import Fileinput from "@/components/ui/Fileinput";
+import Textarea from "@/components/ui/Textarea";
+import Select from "react-select";
+import AnalyticTable from "./company-table";
 
 const MostSales = dynamic(
   () => import("@/components/partials/widget/most-sales"),
@@ -18,120 +26,176 @@ const MostSales = dynamic(
     ssr: false,
   }
 );
+
+const buttons = [
+  {
+    title: "Departamento Contábil",
+    icon: "heroicons-outline:home",
+  },
+  {
+    title: "Departamento Tributário",
+    icon: "heroicons-outline:user",
+  },
+  {
+    title: "Departamento Pessoal",
+    icon: "heroicons-outline:chat-alt-2",
+  },
+];
+
+const furits = [
+  { value: "chocolate", label: "Extrato Bancário (Inter)" },
+  { value: "strawberry", label: "Extrato Bancário (Inter)" },
+  { value: "vanilla", label: "Extrato Bancário (Inter)" },
+];
+
+
+const furits1 = [
+  { value: "chocolate", label: "Março/2024" },
+  { value: "strawberry", label: "Março/2024" },
+  { value: "vanilla", label: "Março/2024" },
+];
+
+const styles = {
+  option: (provided, state) => ({
+    ...provided,
+    fontSize: "14px",
+  }),
+};
+
 const Dashboard = () => {
   const [filterMap, setFilterMap] = useState("usa");
+  const [selectedFile, setSelectedFile] = useState(null);
+
+  const handleFileChange = (e) => {
+    setSelectedFile(e.target.files[0]);
+  };
+
   return (
     <div>
-      <HomeBredCurbs title="Dashboard" />
-      <div className="grid grid-cols-12 gap-5 mb-5">
-        <div className="2xl:col-span-3 lg:col-span-4 col-span-12">
-          <ImageBlock1 />
-        </div>
-        <div className="2xl:col-span-9 lg:col-span-8 col-span-12">
-          <Card bodyClass="p-4">
-            <div className="grid md:grid-cols-3 col-span-1 gap-4">
-              <GroupChart1 />
-            </div>
-          </Card>
-        </div>
-      </div>
-      <div className="grid grid-cols-12 gap-5">
-        <div className="lg:col-span-8 col-span-12">
-          <Card>
-            <div className="legend-ring">
-              <RevenueBarChart />
-            </div>
-          </Card>
-        </div>
-        <div className="lg:col-span-4 col-span-12">
-          <Card title="Overview" headerslot={<SelectMonth />}>
-            <RadialsChart />
-          </Card>
-        </div>
-        <div className="lg:col-span-8 col-span-12">
-          <Card title="All Company" headerslot={<SelectMonth />} noborder>
-            <CompanyTable />
-          </Card>
-        </div>
-        <div className="lg:col-span-4 col-span-12">
-          <Card title="Recent Activity" headerslot={<SelectMonth />}>
-            <RecentActivity />
-          </Card>
-        </div>
-        <div className="lg:col-span-8 col-span-12">
-          <Card
-            title="Most Sales"
-            headerslot={
-              <div className="border border-slate-200 dark:border-slate-700 dark:bg-slate-900 rounded p-1 flex items-center">
-                <span
-                  className={` flex-1 text-sm font-normal px-3 py-1 transition-all duration-150 rounded cursor-pointer
-                ${
-                  filterMap === "global"
-                    ? "bg-slate-900 text-white dark:bg-slate-700 dark:text-slate-300"
-                    : "dark:text-slate-300"
-                }  
-                `}
-                  onClick={() => setFilterMap("global")}
-                >
-                  Global
-                </span>
-                <span
-                  className={` flex-1 text-sm font-normal px-3 py-1 rounded transition-all duration-150 cursor-pointer
-                  ${
-                    filterMap === "usa"
-                      ? "bg-slate-900 text-white dark:bg-slate-700 dark:text-slate-300"
-                      : "dark:text-slate-300"
-                  }
+      {/* <HomeBredCurbs title="Dashboard" /> */}
+      <div className="">
+        <Tab.Group>
+          <Tab.List className=" space-x-0 rtl:space-x-reverse flex">
+            {buttons.map((item, i) => (
+              <Tab className=" " as={Fragment} key={i}>
+                {({ selected }) => (
+                  <button
+                    className={` inline-flex grow justify-between	 items-start text-sm font-medium mb-7 text-[#282828]  capitalize  dark:bg-slate-800 ring-0 foucs:ring-0 focus:outline-none px-3 py-2 transition duration-150
+              ${selected ? "bg-white" : "bg-[#D9D9D9]"}
               `}
-                  onClick={() => setFilterMap("usa")}
-                >
-                  USA
-                </span>
-              </div>
-            }
-          >
-            <MostSales filterMap={filterMap} />
-          </Card>
-        </div>
-        <div className="lg:col-span-4 col-span-12">
-          <Card title="Overview" headerslot={<SelectMonth />}>
-            <RadarChart />
-            <div className="bg-slate-50 dark:bg-slate-900 rounded p-4 mt-8 flex justify-between flex-wrap">
-              <div className="space-y-1">
-                <h4 className="text-slate-600 dark:text-slate-200 text-xs font-normal">
-                  Invested amount
-                </h4>
-                <div className="text-sm font-medium text-slate-900 dark:text-white">
-                  $8264.35
+                  >
+                    <span>{item.title}</span>
+                    <span
+                      class={`inline-block w-4 h-4  rounded-full  ${
+                        selected ? "bg-white" : "bg-[#DB3A34]"
+                      }`}
+                    ></span>
+                  </button>
+                )}
+              </Tab>
+            ))}
+          </Tab.List>
+          <Tab.Panels>
+            <Tab.Panel>
+              <div className="grid grid-cols-12 gap-5">
+                <div className="lg:col-span-8 col-span-12">
+                  <Card >
+                    <div class="grid grid-cols-12 gap-5">
+                      <div className="md:col-span-8 col-span-12  space-y-4">
+                    
+                        <div>
+                          <label htmlFor=" hh" className="form-label ">
+                          Arquivo a enviar
+                          </label>
+                          <Select
+                            className="react-select"
+                            classNamePrefix="select"
+                            defaultValue={furits[0]}
+                            options={furits}
+                            styles={styles}
+                            id="hh"
+                          />
+                        </div>
+                        <Fileinput
+                          name="basic"
+                          placeholder="arraste e solte o PDF aqui..."
+                 
+                          selectedFile={selectedFile}
+                          onChange={handleFileChange}
+                        />
+                        <Textarea
+                          label="Comentário (Opcional)"
+                          id="pn4"
+                          placeholder=""
+                        />
+                      </div>
+                      <div className="md:col-span-4 col-span-12 space-y-4">
+                      <div>
+                          <label htmlFor=" hh" className="form-label ">
+                          Competência
+                          </label>
+                          <Select
+                            className="react-select"
+                            classNamePrefix="select"
+                            defaultValue={furits1[0]}
+                            options={furits1}
+                            styles={styles}
+                            id="hh"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div className="mt-4 flex justify-end">
+                        <Button text="Enviar" className="bg-[#DB3A34] text-white rounded-3xl" />
+                      </div>
+                  </Card>
                 </div>
-                <div className="text-slate-500 dark:text-slate-300 text-xs font-normal">
-                  +0.001.23 (0.2%)
+                <div className="lg:col-span-4 col-span-12 h-full">
+                  <Card className="h-full bg-white" >
+                    <RecentActivity />
+                  </Card>
                 </div>
-              </div>
+                <div className="lg:col-span-12 col-span-12">
+                  <Card
+               
+                    noborder
+                  >
 
-              <div className="space-y-1">
-                <h4 className="text-slate-600 dark:text-slate-200 text-xs font-normal">
-                  Invested amount
-                </h4>
-                <div className="text-sm font-medium text-slate-900 dark:text-white">
-                  $8264.35
+                    <AnalyticTable
+      />
+                  </Card>
                 </div>
+               
               </div>
-
-              <div className="space-y-1">
-                <h4 className="text-slate-600 dark:text-slate-200 text-xs font-normal">
-                  Invested amount
-                </h4>
-                <div className="text-sm font-medium text-slate-900 dark:text-white">
-                  $8264.35
-                </div>
+            </Tab.Panel>
+            <Tab.Panel>
+              <div className="text-slate-600 dark:text-slate-400 text-sm font-normal">
+                Aliqua id fugiat nostrud irure ex duis ea quis id quis ad et.
+                Sunt qui esse pariatur duis deserunt mollit dolore cillum minim
+                tempor enim.
               </div>
-            </div>
-          </Card>
-        </div>
+            </Tab.Panel>
+            <Tab.Panel>
+              <div className="text-slate-600 dark:text-slate-400 text-sm font-normal">
+                Aliqua id fugiat nostrud irure ex duis ea quis id quis ad et.
+                Sunt qui
+              </div>
+            </Tab.Panel>
+            <Tab.Panel>
+              <div className="text-slate-600 dark:text-slate-400 text-sm font-normal">
+                Aliqua id fugiat nostrud irure ex duis ea quis id quis ad et.
+                Sunt qui esse pariatur duis deserunt mollit dolore cillum minim
+                tempor enim. Elit aute irure tempor cupidatat incididunt sint
+                deserunt ut voluptate aute id deserunt nisi.
+              </div>
+            </Tab.Panel>
+          </Tab.Panels>
+        </Tab.Group>
       </div>
     </div>
   );
 };
+
+
 
 export default Dashboard;
