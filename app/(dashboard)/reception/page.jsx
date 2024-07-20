@@ -3,7 +3,7 @@ import React, { Fragment } from "react";
 import Card from "@/components/ui/Card";
 import Icon from "@/components/ui/Icon";
 import { Tab, Disclosure, Transition } from "@headlessui/react";
-
+import { ResumeTable, DetailsTable } from "./SubTab";
 const columns = [
   {
     label: "Employee",
@@ -158,137 +158,27 @@ const TabAccrodain = () => {
           </Tab.List>
           <Tab.Panels>
             <Tab.Panel>
-            <div className="grid grid-cols-3 gap-4">
-              <div className="col-span-2 bg-white rounded">
-                <div className="">
-                  <div className="grid grid-cols-3 gap-4 mb-4">
-                    <div className="col-span-2 pr-2">
-                      <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="fileType">
-                        Arquivo a enviar
-                      </label>
-                      
-                      <select
-                        id="fileType"
-                        className="block appearance-none w-full bg-white border border-gray-300 hover:border-gray-500 px-4 py-2 pr-8 rounded leading-tight focus:outline-none focus:shadow-outline"
-                      >
-                        <option>Extrato Bancário (Inter)</option>
-                        <option>Comprovantes de pgto dos Holerites</option>
-                        <option>Comprovante de pgto do Aluguel</option>
-                        <option>Fatura do cartão (Inter)</option>
-                        <option>Fatura Cartão (Nubank)</option>
-                        <option>Comissões do Checkout</option>
-                      </select>
-                    </div>
-                    <div className="w-3/10 pl-2">
-                      <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="competencia">
-                        Competência
-                      </label>
-                      <select
-                        id="competencia"
-                        className="block appearance-none w-full bg-white border border-gray-300 hover:border-gray-500 px-4 py-2 pr-8 rounded leading-tight focus:outline-none focus:shadow-outline"
-                      >
-                        <option>Março/2024</option>
-                        <option>Abril/2024</option>
-                        <option>Maio/2024</option>
-                        {/* Add more months as needed */}
-                      </select>
-                    </div>
-                  </div>
-                  <div className="grid grid-cols-3 gap-4">
-                    <label className="block text-gray-700 text-sm font-bold mb-2">
-                      Arraste e solte o PDF aqui
-                    </label>
-                    <button
-                      className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                      type="button"
-                    >
-                      Selecionar arquivo PDF
-                    </button>
-                  </div>
-                  <div className="grid grid-cols-3 gap-4 mb-4">
-                    <div className="col-span-2">
-
-                      <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="comment">
-                        Comentário (Opcional)
-                      </label>
-                      <textarea
-                        id="comment"
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        placeholder=""
-                      ></textarea>
-                    </div>
-                  </div>
-                  <div className="flex justify-end">
-                    <button
-                      className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                      type="button"
-                    >
-                      Enviar
-                    </button>
-                  </div>
-                </div>
+              <div className="mb-5">
+                <ResumeTable columns={columns} rows={rows.slice(0, 2)} />
               </div>
-              <div className="col-span-1 bg-white rounded">
-                <h2 className="text-gray-700 text-lg font-bold mb-4">Arquivos pendentes</h2>
-                <ul>
-                  <li className="mb-2 bg-gray-200 p-2 rounded-full">Extrato bancário (Inter)</li>
-                  <li className="mb-2 bg-gray-200 p-2 rounded-full">Comprovantes de pgto dos Holerites</li>
-                  <li className="mb-2 bg-gray-200 p-2 rounded-full">Comprovante de pgto do Aluguel</li>
-                  <li className="mb-2 bg-gray-200 p-2 rounded-full">Fatura do cartão (Inter)</li>
-                  <li className="mb-2 bg-gray-200 p-2 rounded-full">Fatura Cartão (Nubank)</li>
-                  <li className="mb-2 bg-gray-200 p-2 rounded-full">Comissões do Checkout</li>
-                </ul>
-              </div>
-            </div>
               <div className="w-10/10">
-                <Card title="Historico dos arquivos enviados  " noborder>
-                  <div className="overflow-x-auto -mx-6">
-                    <div className="inline-block min-w-full align-middle">
-                      <div className="overflow-hidden ">
-                        <table className="min-w-full divide-y divide-slate-100 table-fixed dark:divide-slate-700">
-                          <thead className="bg-slate-200 dark:bg-slate-700">
-                            <tr>
-                              {columns.map((column, i) => (
-                                <th key={i} scope="col" className=" table-th ">
-                                  {column.label}
-                                </th>
-                              ))}
-                            </tr>
-                          </thead>
-                          <tbody className="bg-white divide-y divide-slate-100 dark:bg-slate-800 dark:divide-slate-700">
-                            {rows.map((row, i) => (
-                              <tr
-                                key={i}
-                                className=" even:bg-slate-200 dark:even:bg-slate-700"
-                              >
-                                <td className="table-td">{row.employee}</td>
-                                <td className="table-td">{row.position}</td>
-                                <td className="table-td ">{row.type}</td>
-                                <td className="table-td ">{row.competence}</td>
-                                <td className="table-td ">{row.gross}</td>
-                                <td className="table-td ">{row.amountPaid}</td>
-                                
-                              </tr>
-                            ))}
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
-                </Card>
+                <DetailsTable columns={columns} rows={rows} />
               </div>
             </Tab.Panel>
             <Tab.Panel>
-              <div className="text-slate-600 dark:text-slate-400 text-sm font-normal">
-                Aliqua id fugiat nostrud irure ex duis ea quis id quis ad et.
-                Sunt qui esse pariatur duis deserunt mollit dolore cillum minim
-                tempor enim.
+              <div className="mb-5">
+                <ResumeTable columns={columns} rows={rows.slice(0, 2)} />
+              </div>
+              <div className="w-10/10">
+                <DetailsTable columns={columns} rows={rows} />
               </div>
             </Tab.Panel>
             <Tab.Panel>
-              <div className="text-slate-600 dark:text-slate-400 text-sm font-normal">
-                Aliqua id fugiat nostrud irure ex duis ea quis id quis ad et.
-                Sunt qui
+              <div className="mb-5">
+                <ResumeTable columns={columns} rows={rows.slice(0, 2)} />
+              </div>
+              <div className="w-10/10">
+                <DetailsTable columns={columns} rows={rows} />
               </div>
             </Tab.Panel>
           </Tab.Panels>
