@@ -41,9 +41,9 @@ export const ResumeTable = ({rows}) => {
             <div className="overflow-hidden ">
               <table className="min-w-full divide-y divide-slate-100 table-fixed dark:divide-slate-700">
                 <thead className="bg-slate-200 dark:bg-slate-700">
-                  <tr className="bg-red-500 rounded-full">
+                  <tr>
                     {columns.map((column, i) => (
-                      <th key={i} scope="col" className=" table-th text-white">
+                      <th key={i} scope="col" className={"bg-red-500 table-th text-white "+(i==0?"rounded-l-full":i==columns.length-1?"rounded-r-full":"")}>
                         {column.label}
                       </th>
                     ))}
