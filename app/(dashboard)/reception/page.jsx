@@ -229,12 +229,12 @@ const TabAccrodain = () => {
               <div className="w-3/10 bg-white p-4 rounded">
                 <h2 className="text-gray-700 text-lg font-bold mb-4">Arquivos pendentes</h2>
                 <ul>
-                  <li className="mb-2 bg-gray-200 p-2 rounded">Extrato bancário (Inter)</li>
-                  <li className="mb-2 bg-gray-200 p-2 rounded">Comprovantes de pgto dos Holerites</li>
-                  <li className="mb-2 bg-gray-200 p-2 rounded">Comprovante de pgto do Aluguel</li>
-                  <li className="mb-2 bg-gray-200 p-2 rounded">Fatura do cartão (Inter)</li>
-                  <li className="mb-2 bg-gray-200 p-2 rounded">Fatura Cartão (Nubank)</li>
-                  <li className="mb-2 bg-gray-200 p-2 rounded">Comissões do Checkout</li>
+                  <li className="mb-2 bg-gray-200 p-2 rounded-full">Extrato bancário (Inter)</li>
+                  <li className="mb-2 bg-gray-200 p-2 rounded-full">Comprovantes de pgto dos Holerites</li>
+                  <li className="mb-2 bg-gray-200 p-2 rounded-full">Comprovante de pgto do Aluguel</li>
+                  <li className="mb-2 bg-gray-200 p-2 rounded-full">Fatura do cartão (Inter)</li>
+                  <li className="mb-2 bg-gray-200 p-2 rounded-full">Fatura Cartão (Nubank)</li>
+                  <li className="mb-2 bg-gray-200 p-2 rounded-full">Comissões do Checkout</li>
                 </ul>
               </div>
             </div>
