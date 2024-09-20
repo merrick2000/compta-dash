@@ -15,8 +15,8 @@ export const menuItems = [
         childlink: "files-management",
       },
       {
-        childtitle: "Analytics Dashboard",
-        childlink: "analytics",
+        childtitle: "Enviar",
+        childlink: "envoie",
       },
       {
         childtitle: "Ecommerce Dashboard",
