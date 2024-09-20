@@ -136,21 +136,21 @@ const TabAccrodain = () => {
       
       <Card title="">
         <Tab.Group>
-          <Tab.List className="lg:space-x-8 md:space-x-3 space-x-0 rtl:space-x-reverse">
+        <Tab.List className=" space-x-0 rtl:space-x-reverse flex">
             {buttons.map((item, i) => (
-              <Tab as={Fragment} key={i}>
+              <Tab className=" " as={Fragment} key={i}>
                 {({ selected }) => (
                   <button
-                    className={` text-sm font-medium mb-7 last:mb-0 capitalize ring-0 foucs:ring-0 focus:outline-none px-6 rounded-md py-2 transition duration-150
-              
-              ${
-                selected
-                  ? "text-black bg-white dark:bg-slate-800 dark:text-slate-500 "
-                  : "text-black bg-gray-100 dark:bg-slate-700 dark:text-slate-300"
-              }
+                    className={` inline-flex grow justify-between	 items-start text-sm font-medium mb-7 text-[#282828]  capitalize  dark:bg-slate-800 ring-0 foucs:ring-0 focus:outline-none px-3 py-2 transition duration-150
+              ${selected ? "bg-white" : "bg-[#D9D9D9]"}
               `}
                   >
-                    {item.title}
+                    <span>{item.title}</span>
+                    <span
+                      class={`inline-block w-4 h-4  rounded-full  ${
+                        selected ? "bg-white" : "bg-[#DB3A34]"
+                      }`}
+                    ></span>
                   </button>
                 )}
               </Tab>
@@ -158,14 +158,15 @@ const TabAccrodain = () => {
           </Tab.List>
           <Tab.Panels>
             <Tab.Panel>
-            <div className="flex">
-              <div className="w-7/10 bg-white p-4 rounded">
-                <div className="bg-white p-4 rounded shadow w-full max-w-lg">
-                  <div className="flex justify-between mb-4">
-                    <div className="w-7/10 pr-2">
+            <div className="grid grid-cols-3 gap-4">
+              <div className="col-span-2 bg-white rounded">
+                <div className="">
+                  <div className="grid grid-cols-3 gap-4 mb-4">
+                    <div className="col-span-2 pr-2">
                       <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="fileType">
                         Arquivo a enviar
                       </label>
+                      
                       <select
                         id="fileType"
                         className="block appearance-none w-full bg-white border border-gray-300 hover:border-gray-500 px-4 py-2 pr-8 rounded leading-tight focus:outline-none focus:shadow-outline"
@@ -193,8 +194,7 @@ const TabAccrodain = () => {
                       </select>
                     </div>
                   </div>
-                  <div className="mb-4">
-                    <div className="flex items-center justify-center w-full">
+                  <div className="grid grid-cols-3 gap-4">
                     <label className="block text-gray-700 text-sm font-bold mb-2">
                       Arraste e solte o PDF aqui
                     </label>
@@ -204,19 +204,21 @@ const TabAccrodain = () => {
                     >
                       Selecionar arquivo PDF
                     </button>
+                  </div>
+                  <div className="grid grid-cols-3 gap-4 mb-4">
+                    <div className="col-span-2">
+
+                      <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="comment">
+                        Comentário (Opcional)
+                      </label>
+                      <textarea
+                        id="comment"
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        placeholder=""
+                      ></textarea>
                     </div>
                   </div>
-                  <div className="mb-4">
-                    <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="comment">
-                      Comentário (Opcional)
-                    </label>
-                    <textarea
-                      id="comment"
-                      className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                      placeholder=""
-                    ></textarea>
-                  </div>
-                  <div className="flex justify-center">
+                  <div className="flex justify-end">
                     <button
                       className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                       type="button"
@@ -226,7 +228,7 @@ const TabAccrodain = () => {
                   </div>
                 </div>
               </div>
-              <div className="w-3/10 bg-white p-4 rounded">
+              <div className="col-span-1 bg-white rounded">
                 <h2 className="text-gray-700 text-lg font-bold mb-4">Arquivos pendentes</h2>
                 <ul>
                   <li className="mb-2 bg-gray-200 p-2 rounded-full">Extrato bancário (Inter)</li>
