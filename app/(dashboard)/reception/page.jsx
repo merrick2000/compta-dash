@@ -126,7 +126,7 @@ const rows = [
     type: "Adiantamento",
     competence: "March/2024",
     gross: "R$ 1,520.00",
-    amountPaid: "R$ 608.00",
+    amountPaid: "R$ 608.001",
   },
 ];
 const TabAccrodain = () => {
