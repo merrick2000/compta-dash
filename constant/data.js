@@ -5,7 +5,7 @@ export const menuItems = [
   },
 
   {
-    title: "Dashboard",
+    title: "Documentação",
     icon: "heroicons-outline:home",
     isOpen: true,
     isHide: true,
@@ -33,6 +33,10 @@ export const menuItems = [
       {
         childtitle: "Banking Dashboard",
         childlink: "banking",
+      },
+      {
+        childtitle: "Recepção",
+        childlink: "reception",
       },
     ],
   },
