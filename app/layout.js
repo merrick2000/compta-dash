@@ -7,11 +7,13 @@ import "leaflet/dist/leaflet.css";
 import "./scss/app.scss";
 import { Provider } from "react-redux";
 import store from "../store";
+import GlobalScrollbarStyle from "./GlobalScrollbarStyle";
 export default function RootLayout({ children }) {
   return (
     <>
       <html lang="en">
         <body className="font-inter  custom-tippy dashcode-app">
+          <GlobalScrollbarStyle />
           <Provider store={store}>{children}</Provider>
         </body>
       </html>

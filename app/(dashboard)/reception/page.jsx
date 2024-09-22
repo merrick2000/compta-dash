@@ -3,34 +3,72 @@ import React, { Fragment } from "react";
 import Card from "@/components/ui/Card";
 import Icon from "@/components/ui/Icon";
 import { Tab, Disclosure, Transition } from "@headlessui/react";
-import { ResumeTable, DetailsTable } from "./SubTab";
-const columns = [
-  {
-    label: "Employee",
-    field: "employee",
-  },
-  {
-    label: "Position",
-    field: "position",
-  },
+import { ResumeTable } from "./SubTab";
+import RecentActivity from "@/components/partials/widget/recent-activity copy";
+import AnalyticTable, { DetailsTable } from "../envoie/company-table";
+import { Pago } from "@/components/custom/Pago";
+import { Recalculo } from "@/components/custom/Recalculo";
+import CustomCalendar from "@/components/custom/CustomCalendar";
+const hResumeColumns = [
+  { field: "funcionarios", label: "Funcionários" },
+  { field: "competencia", label: "Competência" },
+  { field: "vencimento", label: "Vencimento" },
+  { field: "valorPagar", label: "Valor a pagar" },
+  { field: "impostos", label: "Impostos" },
+  { field: "baixar", label: "Baixar" },
+];
 
+const hResumeData = [
   {
-    label: "Type",
-    field: "type",
+    funcionarios: "Adiantamento mensal",
+    competencia: "Abril/2024",
+    vencimento: "20/04/2024",
+    valorPagar: "R$ 5.239,20",
+    impostos: "R$ --,--",
   },
+  {
+    funcionarios: "Salário mensal",
+    competencia: "Abril/2024",
+    vencimento: "05/05/2024",
+    valorPagar: "R$ 13.098,00",
+    impostos: "R$ 1.047,84",
+  },
+];
 
+const impostosResumeData = [
   {
-    label: "Competence",
-    field: "competence",
+    guiaImposto: "ICMS Substituição Tributária",
+    vencimento: "04/06/2024",
   },
   {
-    label: "Gross",
-    field: "gross",
+    guiaImposto: "ICMS Diferença de Alíquota",
+    vencimento: "15/06/2024",
   },
   {
-    label: "Amount Paid",
-    field: "amountPaid",
+    guiaImposto: "DCTF WEB",
+    vencimento: "15/06/2024",
   },
+  {
+    guiaImposto: "FGTS",
+    vencimento: "19/06/2024",
+  },
+  {
+    guiaImposto: "IRRF Aluguel",
+    vencimento: "20/06/2024",
+  },
+  {
+    guiaImposto: "Simples Nacional",
+    vencimento: "20/06/2024",
+  },
+  {
+    guiaImposto: "ICMS Antecipação",
+    vencimento: "20/06/2024",
+  },
+];
+const impostosResumeColumns = [
+  { field: "guiaImposto", label: "Guia de Imposto" },
+  { field: "vencimento", label: "Vencimento" },
+  { field: "verBaixar", label: "Ver/Baixar" },
 ];
 
 const buttons = [
@@ -39,7 +77,7 @@ const buttons = [
     icon: "heroicons-outline:home",
   },
   {
-    title: "Departamento Pessoal",
+    title: "Holerites",
     icon: "heroicons-outline:chat-alt-2",
   },
   {
@@ -49,84 +87,202 @@ const buttons = [
 ];
 const rows = [
   {
-    employee: "Andrea Gonçalves",
-    position: "Ger. Atendimento",
-    type: "Salário mensal",
-    competence: "March/2024",
-    gross: "R$ 2,086.00",
-    amountPaid: "R$ 1,891.24",
+    guia: "ICMS Substituição Tributária",
+    date: "04/05/2024",
+    pago: <Pago status={true} />,
+    recalculo: <Recalculo isEnabled={true} />,
   },
   {
-    employee: "Janilson Borges",
-    position: "Atendente",
-    type: "Adiantamento",
-    competence: "March/2024",
-    gross: "R$ 1,520.00",
-    amountPaid: "R$ 608.00",
+    guia: "ICMS Diferença de Alíquota",
+    date: "15/05/2024",
+    pago: <Pago status={false} />,
+    recalculo: <Recalculo isEnabled={true} />,
   },
   {
-    employee: "Joaquim Paula",
-    position: "Ger. Financeiro",
-    type: "Adiantamento",
-    competence: "March/2024",
-    gross: "R$ 2,410.00",
-    amountPaid: "R$ 684.00",
+    guia: "DCTF WED",
+    date: "15/05/2024",
+    pago: <Pago status={true} />,
+    recalculo: <Recalculo isEnabled={false} />,
   },
   {
-    employee: "Marcelo Leite",
-    position: "Ger. Logística",
-    type: "Salário mensal",
-    competence: "March/2024",
-    gross: "R$ 2,700.00",
-    amountPaid: "R$ 2,477.18",
+    guia: "FGTS",
+    date: "19/05/2024",
+    pago: <Pago status={false} />,
+    recalculo: <Recalculo isEnabled={false} />,
   },
   {
-    employee: "Susi Lazarini",
-    position: "Empacotador",
-    type: "Salário mensal",
-    competence: "March/2024",
-    gross: "R$ 1,470.00",
-    amountPaid: "R$ 1,358.88",
+    guia: "IRRF Re-Inf",
+    date: "10/05/2024",
+    pago: <Pago status={true} />,
+    recalculo: <Recalculo isEnabled={true} />,
   },
   {
-    employee: "Marcos Alves",
-    position: "Atendente",
-    type: "Adiantamento",
-    competence: "March/2024",
-    gross: "R$ 1,520.00",
-    amountPaid: "R$ 608.00",
+    guia: "SIMPLES NACIONAL",
+    date: "20/05/2024",
+    pago: <Pago status={true} />,
+    recalculo: <Recalculo isEnabled={false} />,
   },
   {
-    employee: "Bruna Pimentel",
-    position: "Aux. Logística",
-    type: "Adiantamento",
-    competence: "March/2024",
-    gross: "R$ 1,141.20",
-    amountPaid: "R$ 564.80",
+    guia: "FGTS Rescisório",
+    date: "21/05/2024",
+    pago: <Pago status={false} />,
+    recalculo: <Recalculo isEnabled={true} />,
   },
   {
-    employee: "Marcos Alves",
-    position: "Atendente",
-    type: "Adiantamento",
-    competence: "March/2024",
-    gross: "R$ 1,520.00",
-    amountPaid: "R$ 608.00",
+    guia: "INSS",
+    date: "20/05/2024",
+    pago: <Pago status={false} />,
+    recalculo: <Recalculo isEnabled={true} />,
   },
   {
-    employee: "Bruna Pimentel",
-    position: "Aux. Logística",
-    type: "Adiantamento",
-    competence: "March/2024",
-    gross: "R$ 1,141.20",
-    amountPaid: "R$ 564.80",
+    guia: "ICMS Antecipação",
+    date: "20/05/2024",
+    pago: <Pago status={true} />,
+    recalculo: <Recalculo isEnabled={false} />,
   },
   {
-    employee: "Marcos Alves",
-    position: "Atendente",
-    type: "Adiantamento",
-    competence: "March/2024",
-    gross: "R$ 1,520.00",
-    amountPaid: "R$ 608.001",
+    guia: "IMCS COMÉRCIO",
+    date: "02/06/2024",
+    pago: <Pago status={false} />,
+    recalculo: <Recalculo isEnabled={true} />,
+  },
+];
+const holeritesData = [
+  {
+    funcionarios: "Andrea Gonçalves",
+    cargo: "Ger. Atendimento",
+    tipo: "Salário mensal",
+    competencia: "Março/2024",
+    bruto: "R$ 2.066,00",
+    valorPago: "R$ 1.901,24",
+  },
+  {
+    funcionarios: "Janilson Borges",
+    cargo: "Atendente",
+    tipo: "Adiantamento",
+    competencia: "Março/2024",
+    bruto: "R$ 1.520,00",
+    valorPago: "R$ 608,00",
+  },
+  {
+    funcionarios: "Joaquim Paulo",
+    cargo: "Ger. Financeiro",
+    tipo: "Adiantamento",
+    competencia: "Março/2024",
+    bruto: "R$ 2.410,00",
+    valorPago: "R$ 964,00",
+  },
+  {
+    funcionarios: "Marcelo Leite",
+    cargo: "Ger. Logística",
+    tipo: "Salário mensal",
+    competencia: "Março/2024",
+    bruto: "R$ 2.700,00",
+    valorPago: "R$ 2.477,18",
+  },
+  {
+    funcionarios: "Susi Lazarini",
+    cargo: "Empacotador",
+    tipo: "Salário mensal",
+    competencia: "Março/2024",
+    bruto: "R$ 1.470,00",
+    valorPago: "R$ 1.358,88",
+  },
+  {
+    funcionarios: "Marcos Alves",
+    cargo: "Atendente",
+    tipo: "Adiantamento",
+    competencia: "Março/2024",
+    bruto: "R$ 1.520,00",
+    valorPago: "R$ 608,00",
+  },
+  {
+    funcionarios: "Bruna Pimentel",
+    cargo: "Aux. Logística",
+    tipo: "Adiantamento",
+    competencia: "Março/2024",
+    bruto: "R$ 1.412,00",
+    valorPago: "R$ 564,80",
+  },
+  {
+    funcionarios: "Marcos Alves",
+    cargo: "Atendente",
+    tipo: "Adiantamento",
+    competencia: "Março/2024",
+    bruto: "R$ 1.520,00",
+    valorPago: "R$ 608,00",
+  },
+  {
+    funcionarios: "Bruna Pimentel",
+    cargo: "Aux. Logística",
+    tipo: "Adiantamento",
+    competencia: "Março/2024",
+    bruto: "R$ 1.412,00",
+    valorPago: "R$ 564,80",
+  },
+  {
+    funcionarios: "Marcos Alves",
+    cargo: "Atendente",
+    tipo: "Adiantamento",
+    competencia: "Março/2024",
+    bruto: "R$ 1.520,00",
+    valorPago: "R$ 608,00",
+  },
+];
+
+const holeritesColumns = [
+  {
+    label: "Funcionários",
+    field: "employee",
+  },
+  {
+    label: "Cargo",
+    field: "position",
+  },
+
+  {
+    label: "Tipo",
+    field: "type",
+  },
+
+  {
+    label: "Competência",
+    field: "competence",
+  },
+  {
+    label: "Bruto",
+    field: "gross",
+  },
+  {
+    label: "Valor Pago",
+    field: "amountPaid",
+  },
+  {
+    label: "Baixar",
+    field: "download",
+  },
+];
+
+const tableColumns = [
+  {
+    label: "Guia",
+    field: "Guia",
+  },
+  {
+    label: "Vencimento",
+    field: "Vencimento",
+  },
+  {
+    label: "Pago",
+    field: "Pago",
+  },
+  {
+    label: "Recalculo",
+    field: "Recalculo",
+  },
+  {
+    label: "Baixar",
+    field: "Baixar",
   },
 ];
 const TabAccrodain = () => {
@@ -155,28 +311,71 @@ const TabAccrodain = () => {
             ))}
           </Tab.List>
           <Tab.Panels>
+            {/* Guia de impostos */}
             <Tab.Panel>
-              <div className="mb-5">
-                <ResumeTable columns={columns} rows={rows.slice(0, 2)} />
-              </div>
-              <div className="w-10/10">
-                <DetailsTable columns={columns} rows={rows} />
+              <div className="grid grid-cols-12 gap-5">
+                <div className="h-[35vh] custom-scrollbar border border-[#CACACA] rounded-[10px] lg:col-span-8 col-span-12">
+                  <Card className="h-full bg-white">
+                    <ResumeTable
+                      tableColumns={impostosResumeColumns}
+                      rows={impostosResumeData}
+                    />
+                  </Card>
+                </div>
+                <div className="h-[35vh] lg:col-span-4 col-span-12">
+                  <CustomCalendar />
+                </div>
+                <div className="h-[65vh] custom-scrollbar border border-[#CACACA] rounded-[10px] lg:col-span-12 col-span-12">
+                  <Card noborder>
+                    <AnalyticTable
+                      data={rows}
+                      tableColumns={tableColumns}
+                      type="bof"
+                    />
+                  </Card>
+                </div>
               </div>
             </Tab.Panel>
+            {/* Holerites */}
             <Tab.Panel>
-              <div className="mb-5">
-                <ResumeTable columns={columns} rows={rows.slice(0, 2)} />
-              </div>
-              <div className="w-10/10">
-                <DetailsTable columns={columns} rows={rows} />
+              <div className="grid grid-cols-12 gap-5">
+                <div className="col-span-12 border border-[#CACACA] rounded-[10px] h-full">
+                  <Card className="">
+                    <ResumeTable
+                      tableColumns={hResumeColumns}
+                      rows={hResumeData}
+                    />
+                  </Card>
+                </div>
+                <div className="col-span-12 border border-[#CACACA] rounded-[10px]">
+                  <Card noborder>
+                    <DetailsTable
+                      tableColumns={holeritesColumns}
+                      rows={holeritesData}
+                    />
+                  </Card>
+                </div>
               </div>
             </Tab.Panel>
+            {/* Demonstrato financeiras */}
             <Tab.Panel>
-              <div className="mb-5">
-                <ResumeTable columns={columns} rows={rows.slice(0, 2)} />
-              </div>
-              <div className="w-10/10">
-                <DetailsTable columns={columns} rows={rows} />
+              <div className="grid grid-cols-12 gap-5">
+                <div className="col-span-12 border border-[#CACACA] rounded-[10px] h-full">
+                  <Card className="">
+                    <ResumeTable
+                      tableColumns={hResumeColumns}
+                      rows={hResumeData}
+                    />
+                  </Card>
+                </div>
+                <div className="col-span-12 border border-[#CACACA] rounded-[10px]">
+                  <Card noborder>
+                    <DetailsTable
+                      tableColumns={holeritesColumns}
+                      rows={holeritesData}
+                    />
+                  </Card>
+                </div>
               </div>
             </Tab.Panel>
           </Tab.Panels>
