@@ -184,10 +184,6 @@ export const menuItems = [
         childlink: "faq",
       },
       {
-        childtitle: "Blog",
-        childlink: "blog",
-      },
-      {
         childtitle: "Blank page",
         childlink: "blank-page",
       },
@@ -688,10 +684,6 @@ export const topMenu = [
           {
             m_childtitle: "Blank page",
             m_childlink: "blank-page",
-          },
-          {
-            m_childtitle: "Blog",
-            m_childlink: "blog",
           },
           {
             m_childtitle: "404 page",
