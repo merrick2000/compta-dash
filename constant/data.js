@@ -11,12 +11,12 @@ export const menuItems = [
     isHide: true,
     child: [
       {
-        childtitle: "Files management",
-        childlink: "files-management",
+        childtitle: "Enviar",
+        childlink: "envoie",
       },
       {
-        childtitle: "Analytics Dashboard",
-        childlink: "analytics",
+        childtitle: "Recepção",
+        childlink: "reception",
       },
       {
         childtitle: "Ecommerce Dashboard",
@@ -35,8 +35,8 @@ export const menuItems = [
         childlink: "banking",
       },
       {
-        childtitle: "Recepção",
-        childlink: "reception",
+        childtitle: "Files management",
+        childlink: "files-management",
       },
     ],
   },
