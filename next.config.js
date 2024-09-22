@@ -11,12 +11,6 @@ const nextConfig = {
   experimental: {
     appDir: true,
   },
-  output: "export",
-  assetPrefix: process.env.NODE_ENV === "production" ? "/compta-dash" : "",
-  basePath: process.env.NODE_ENV === "production" ? "/compta-dash" : "",
-  images: {
-    unoptimized: true,
-  },
   // Configuration du proxy (si nécessaire)
   async rewrites() {
     return [
