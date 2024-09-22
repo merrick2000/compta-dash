@@ -8,7 +8,7 @@ const env = {
 };
 
 // Validation des variables requises
-const requiredEnvs = ["NEXT_PUBLIC_API_URL"];
+const requiredEnvs = ["API_URL"];
 requiredEnvs.forEach((key) => {
   if (!env[key]) {
     throw new Error(`La variable d'environnement ${key} est manquante.`);
