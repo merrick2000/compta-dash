@@ -190,7 +190,7 @@ const Dashboard = () => {
   };
 
   return (
-    <div>
+    <div className="">
       {/* <HomeBredCurbs title="Dashboard" /> */}
       <div className="">
         <Tab.Group>
@@ -357,10 +357,11 @@ const Dashboard = () => {
                 <div className="col-span-12">
                   <Text className="text-lg font-bold">
                     Relatório mensal de pontos dos funcionários | Competência:
-                    Nov/2024
+                    &nbsp;
                   </Text>
+                  <Text>Nov/2024</Text>
                   <Card className=" bg-white border border-[#CACACA] rounded-[10px] border-dashed">
-                    <div className="border h-full border-danger-600 w-[90%] inline-block text-center space-y-4">
+                    <div className="h-full w-[90%] inline-block text-center space-y-4">
                       <div className="flex flex-col items-center justify-center">
                         <Icon
                           icon="bi:cloud-plus"
@@ -374,10 +375,10 @@ const Dashboard = () => {
                       </div>
                     </div>
 
-                    <div className="border border-green-500 inline-block absolute top-[21.8em] ">
+                    <div className="inline-block absolute top-[22.8em] ">
                       <Button
                         text="Enviar"
-                        className="bg-[#DB3A34] text-white rounded-3xl"
+                        className="bg-[#DB3A34] pb-1 pt-1 text-white rounded-3xl"
                       />
                     </div>
                   </Card>
