@@ -112,11 +112,11 @@ export const DetailsTable = ({ rows, type, screen, tableColumns }) => {
     tableColumns && tableColumns.length > 0
       ? tableColumns
       : [
-          { label: "Arquivos*", field: "file" },
-          { label: "Data de envio*", field: "uploadDate" },
-          { label: "Competência*", field: "competence" },
-          { label: "Comentário*", field: "comment" },
-          { label: "Ver / Baixar*", field: "actions" },
+          { label: "Arquivos", field: "file" },
+          { label: "Data de envio", field: "uploadDate" },
+          { label: "Competência", field: "competence" },
+          { label: "Comentário", field: "comment" },
+          { label: "Ver / Baixar", field: "actions" },
         ];
 
   let tableCells;
@@ -136,7 +136,7 @@ export const DetailsTable = ({ rows, type, screen, tableColumns }) => {
           );
         })}
         {/* Ajout des deux colonnes pour les icônes à la fin de chaque ligne */}
-        <td className="table-td flex justify-start gap-4">
+        <td className="table-td flex justify-start pl-[18%] gap-4">
           {/* Icône "œil" pour la visualisation */}
           <svg
             xmlns="http://www.w3.org/2000/svg"
