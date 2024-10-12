@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDropzone } from "react-dropzone";
 
-const DropZone = () => {
+const DropZone = ({ description }) => {
   const [files, setFiles] = useState([]);
   const { getRootProps, getInputProps, isDragAccept } = useDropzone({
     accept: {
@@ -19,7 +19,7 @@ const DropZone = () => {
   });
   return (
     <div>
-      <div className="w-full text-center border-dashed border border-secondary-500 rounded-md py-[52px] flex flex-col justify-center items-center">
+      <div className="w-full text-center py-[8px] flex flex-col justify-center items-center">
         {files.length === 0 && (
           <div {...getRootProps({ className: "dropzone" })}>
             <input className="hidden" {...getInputProps()} />
@@ -27,14 +27,16 @@ const DropZone = () => {
               src="/assets/images/svg/upload.svg"
               alt=""
               className="mx-auto mb-4"
+              width={150}
+              height={150}
             />
             {isDragAccept ? (
               <p className="text-sm text-slate-500 dark:text-slate-300 ">
                 Drop the files here ...
               </p>
             ) : (
-              <p className="text-sm text-slate-500 dark:text-slate-300 f">
-                Drop files here or click to upload.
+              <p className=" text-slate-500 dark:text-slate-300 f">
+                {description ?? "Drop files here or click to upload."}
               </p>
             )}
           </div>

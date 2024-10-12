@@ -11,6 +11,7 @@ import Textarea from "@/components/ui/Textarea";
 import Select from "react-select";
 import AnalyticTable from "./company-table";
 import { Text } from "recharts";
+import DropZone from "@/components/partials/froms/DropZone";
 
 const MostSales = dynamic(
   () => import("@/components/partials/widget/most-sales"),
@@ -223,7 +224,10 @@ const Dashboard = () => {
                     <div class="grid grid-cols-12 gap-5">
                       <div className="md:col-span-8 col-span-12  space-y-4">
                         <div>
-                          <label htmlFor=" hh" className="form-label ">
+                          <label
+                            htmlFor=" hh"
+                            className="font-semibold font-[poppins]form-label "
+                          >
                             Arquivo a enviar
                           </label>
                           <Select
@@ -246,10 +250,19 @@ const Dashboard = () => {
                           id="pn4"
                           placeholder=""
                         />
+                        <div className="mt-4 inline-block absolute top-[40%] right-[30%] ">
+                          <Button
+                            text="Enviar"
+                            className="bg-[#DB3A34] text-white rounded-[100px] "
+                          />
+                        </div>
                       </div>
                       <div className="md:col-span-4 col-span-12 space-y-4">
                         <div>
-                          <label htmlFor=" hh" className="form-label ">
+                          <label
+                            htmlFor=" hh"
+                            className="font-semibold font-[poppins] form-label "
+                          >
                             Competência
                           </label>
                           <Select
@@ -262,12 +275,6 @@ const Dashboard = () => {
                           />
                         </div>
                       </div>
-                    </div>
-                    <div className="mt-4 flex justify-end">
-                      <Button
-                        text="Enviar"
-                        className="bg-[#DB3A34] text-white rounded-[100px] "
-                      />
                     </div>
                   </Card>
                 </div>
@@ -291,7 +298,10 @@ const Dashboard = () => {
                     <div class="grid grid-cols-12 gap-5">
                       <div className="md:col-span-8 col-span-12  space-y-4">
                         <div>
-                          <label htmlFor=" hh" className="form-label ">
+                          <label
+                            htmlFor=" hh"
+                            className="font-semibold font-[poppins] form-label "
+                          >
                             Categoria do arquivo
                           </label>
                           <Select
@@ -317,7 +327,10 @@ const Dashboard = () => {
                       </div>
                       <div className="md:col-span-4 col-span-12 space-y-4">
                         <div>
-                          <label htmlFor=" hh" className="form-label ">
+                          <label
+                            htmlFor=" hh"
+                            className="font-semibold font-[poppins] form-label "
+                          >
                             Competência
                           </label>
                           <Select
@@ -330,12 +343,6 @@ const Dashboard = () => {
                           />
                         </div>
                       </div>
-                    </div>
-                    <div className="mt-4 flex justify-end">
-                      <Button
-                        text="Enviar"
-                        className="bg-[#DB3A34] text-white rounded-3xl"
-                      />
                     </div>
                   </Card>
                 </div>
@@ -360,8 +367,9 @@ const Dashboard = () => {
                     &nbsp;
                   </Text>
                   <Text>Nov/2024</Text>
-                  <Card className=" bg-white border border-[#CACACA] rounded-[10px] border-dashed">
-                    <div className="h-full w-[90%] inline-block text-center space-y-4">
+                  {/* File upload dropzone */}
+                  <Card className=" bg-white border-dashed border border-secondary-500 rounded-[10px]">
+                    {/* <div className="h-full w-[90%] inline-block text-center space-y-4">
                       <div className="flex flex-col items-center justify-center">
                         <Icon
                           icon="bi:cloud-plus"
@@ -373,15 +381,24 @@ const Dashboard = () => {
                           Solte arquivo aqui ou clique para fazer upload
                         </span>
                       </div>
+                    </div> */}
+                    <div className="inline-block h-full w-[93%]">
+                      <DropZone
+                        description={
+                          "Solte arquivo aqui ou clique para fazer upload"
+                        }
+                      ></DropZone>
                     </div>
 
-                    <div className="inline-block absolute top-[22.8em] ">
+                    <div className="inline-block absolute top-[40%] ">
                       <Button
                         text="Enviar"
                         className="bg-[#DB3A34] pb-1 pt-1 text-white rounded-3xl"
                       />
                     </div>
                   </Card>
+
+                  {/* File upload dropzone */}
                 </div>
                 {/* <div className="lg:col-span-4 col-span-12 h-full">
                   <Card className="h-full bg-white">
