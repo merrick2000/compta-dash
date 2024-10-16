@@ -12,6 +12,8 @@ import Select from "react-select";
 import AnalyticTable from "./company-table";
 import { Text } from "recharts";
 import DropZone from "@/components/partials/froms/DropZone";
+import CustomButton from "@/components/ui/CustomButton";
+import RedStatusMark from "@/components/ui/RedStatusMark";
 
 const MostSales = dynamic(
   () => import("@/components/partials/widget/most-sales"),
@@ -201,15 +203,11 @@ const Dashboard = () => {
                 {({ selected }) => (
                   <button
                     className={` inline-flex grow justify-between	 items-start text-sm font-medium mb-7 text-[#282828]  capitalize  dark:bg-slate-800 ring-0 foucs:ring-0 focus:outline-none px-3 py-2 transition duration-150
-              ${selected ? "bg-white" : "bg-[#D9D9D9]"}
+              ${selected ? "bg-gray-100" : "bg-[#D9D9D9]"}
               `}
                   >
                     <span>{item.title}</span>
-                    <span
-                      class={`inline-block w-4 h-4  rounded-full  ${
-                        selected ? "bg-white" : "bg-[#DB3A34]"
-                      }`}
-                    ></span>
+                    <RedStatusMark />
                   </button>
                 )}
               </Tab>
@@ -219,6 +217,11 @@ const Dashboard = () => {
             {/* Comptabil */}
             <Tab.Panel>
               <div className="grid grid-cols-12 gap-5">
+                <div className="lg:col-span-4 col-span-12 h-full">
+                  <Card className="h-full bg-white border border-[#CACACA] rounded-[10px]">
+                    <RecentActivity type="comptable" />
+                  </Card>
+                </div>
                 <div className=" lg:col-span-8 col-span-12">
                   <Card className="border border-[#CACACA] rounded-[10px] bg-white">
                     <div class="grid grid-cols-12 gap-5">
@@ -226,7 +229,7 @@ const Dashboard = () => {
                         <div>
                           <label
                             htmlFor=" hh"
-                            className="font-semibold font-[poppins]form-label "
+                            className="font-bold font-[poppins] form-label"
                           >
                             Arquivo a enviar
                           </label>
@@ -249,13 +252,8 @@ const Dashboard = () => {
                           label="Comentário (Opcional)"
                           id="pn4"
                           placeholder=""
+                          className="font-semibold font-[poppins] "
                         />
-                        <div className="mt-4 inline-block absolute top-[40%] right-[30%] ">
-                          <Button
-                            text="Enviar"
-                            className="bg-[#DB3A34] text-white rounded-[100px] "
-                          />
-                        </div>
                       </div>
                       <div className="md:col-span-4 col-span-12 space-y-4">
                         <div>
@@ -276,11 +274,6 @@ const Dashboard = () => {
                         </div>
                       </div>
                     </div>
-                  </Card>
-                </div>
-                <div className="lg:col-span-4 col-span-12 h-full">
-                  <Card className="h-full bg-white border border-[#CACACA] rounded-[10px]">
-                    <RecentActivity type="comptable" />
                   </Card>
                 </div>
                 <div className="h-[65vh] custom-scrollbar lg:col-span-12 col-span-12">
@@ -391,10 +384,7 @@ const Dashboard = () => {
                     </div>
 
                     <div className="inline-block absolute top-[40%] ">
-                      <Button
-                        text="Enviar"
-                        className="bg-[#DB3A34] pb-1 pt-1 text-white rounded-3xl"
-                      />
+                      <CustomButton />
                     </div>
                   </Card>
 
