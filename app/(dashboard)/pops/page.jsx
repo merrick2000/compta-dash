@@ -1,5 +1,5 @@
 import React from "react";
-import { ChevronDown, Edit } from "lucide-react";
+// import { ChevronDown, Edit } from "lucide-react";
 import Icon from "@/components/ui/Icon";
 
 const CompanyInformationPage = () => {
@@ -135,7 +135,7 @@ const CompanyInformationPage = () => {
         <div className="space-y-2">
           <div className="flex items-center justify-between p-2 bg-gray-50 rounded">
             <span>Departamento contábil</span>
-            <ChevronDown size={20} />
+            {/* <ChevronDown size={20} /> */}
           </div>
           <div className="pl-4 space-y-2">
             <div className="flex items-center space-x-2">
@@ -150,15 +150,15 @@ const CompanyInformationPage = () => {
           </div>
           <div className="flex items-center justify-between p-2 bg-gray-50 rounded">
             <span>Departamento fiscal</span>
-            <ChevronDown size={20} />
+            {/* <ChevronDown size={20} /> */}
           </div>
           <div className="flex items-center justify-between p-2 bg-gray-50 rounded">
             <span>Departamento Pessoal</span>
-            <ChevronDown size={20} />
+            {/* <ChevronDown size={20} /> */}
           </div>
           <div className="flex items-center justify-between p-2 bg-gray-50 rounded">
             <span>Contratação e demissão</span>
-            <ChevronDown size={20} />
+            {/* <ChevronDown size={20} /> */}
           </div>
         </div>
       </div>
@@ -200,9 +200,7 @@ const CompanyInformationPage = () => {
                 <span className="text-sm text-gray-500">
                   Adicionado em: {item.date}
                 </span>
-                <button>
-                  <Edit size={16} />
-                </button>
+                <button>{/* <Edit size={16} /> */}</button>
               </div>
             </div>
           ))}
@@ -220,9 +218,7 @@ const CompanyInformationPage = () => {
             <div key={index} className="bg-gray-50 p-4 rounded">
               <div className="flex items-center justify-between mb-2">
                 <h3 className="font-semibold">{role}</h3>
-                <button>
-                  <Edit size={16} />
-                </button>
+                <button>{/* <Edit size={16} /> */}</button>
               </div>
               <div className="space-y-1 text-sm">
                 <p>Nome: João da Silva</p>
@@ -247,9 +243,7 @@ const CompanyInformationPage = () => {
             <div key={branch} className="bg-gray-50 p-4 rounded">
               <div className="flex items-center justify-between mb-2">
                 <h3 className="font-semibold">Filial {branch}</h3>
-                <button>
-                  <Edit size={16} />
-                </button>
+                <button>{/* <Edit size={16} /> */}</button>
               </div>
               <div className="space-y-1 text-sm">
                 <p>CNPJ: 00.000.000/0001-00</p>
@@ -289,9 +283,7 @@ const CompanyInformationPage = () => {
                     Contato: (11) 7777-7777
                   </p>
                 </div>
-                <button>
-                  <Edit size={16} />
-                </button>
+                <button>{/* <Edit size={16} /> */}</button>
               </div>
             )
           )}
