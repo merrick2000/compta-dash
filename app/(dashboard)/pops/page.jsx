@@ -1,6 +1,6 @@
-import React from "react";
+// import React from "react";
 // import { ChevronDown, Edit } from "lucide-react";
-import Icon from "@/components/ui/Icon";
+// import Icon from "@/components/ui/Icon";
 
 const CompanyInformationPage = () => {
   return (
