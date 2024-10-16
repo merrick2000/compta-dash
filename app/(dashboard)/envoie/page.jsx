@@ -222,44 +222,41 @@ const Dashboard = () => {
                     <RecentActivity type="comptable" />
                   </Card>
                 </div>
-                <div className=" lg:col-span-8 col-span-12">
+                <div className="lg:col-span-8 col-span-12">
                   <Card className="border border-[#CACACA] rounded-[10px] bg-white">
                     <div class="grid grid-cols-12 gap-5">
-                      <div className="md:col-span-8 col-span-12  space-y-4">
-                        <div>
-                          <label
-                            htmlFor=" hh"
-                            className="font-bold font-[poppins] form-label"
-                          >
-                            Arquivo a enviar
-                          </label>
-                          <Select
-                            className="react-select"
-                            classNamePrefix="select"
-                            defaultValue={furits[0]}
-                            options={furits}
-                            styles={styles}
-                            id="hh"
+                      <div className="md:col-span-8 col-span-12">
+                        <div className="space-y-4">
+                          <div>
+                            <label
+                              htmlFor="hh"
+                              className="font-bold font-[poppins] form-label"
+                            >
+                              Arquivo A Enviar
+                            </label>
+                            <Select
+                              className="react-select"
+                              classNamePrefix="select"
+                              defaultValue={furits[0]}
+                              options={furits}
+                              styles={styles}
+                              id="hh"
+                            />
+                          </div>
+                          <Fileinput
+                            name="basic"
+                            placeholder="arraste e solte o PDF aqui..."
+                            selectedFile={selectedFile}
+                            onChange={handleFileChange}
                           />
                         </div>
-                        <Fileinput
-                          name="basic"
-                          placeholder="arraste e solte o PDF aqui..."
-                          selectedFile={selectedFile}
-                          onChange={handleFileChange}
-                        />
-                        <Textarea
-                          label="Comentário (Opcional)"
-                          id="pn4"
-                          placeholder=""
-                          className="font-semibold font-[poppins] "
-                        />
                       </div>
+
                       <div className="md:col-span-4 col-span-12 space-y-4">
                         <div>
                           <label
-                            htmlFor=" hh"
-                            className="font-semibold font-[poppins] form-label "
+                            htmlFor="competencia"
+                            className="font-semibold font-[poppins] form-label"
                           >
                             Competência
                           </label>
@@ -269,16 +266,35 @@ const Dashboard = () => {
                             defaultValue={furits1[0]}
                             options={furits1}
                             styles={styles}
-                            id="hh"
+                            id="competencia"
                           />
                         </div>
+                      </div>
+
+                      {/* Champ de commentaire occupant toute la largeur */}
+                      <div className="col-span-8">
+                        <Textarea
+                          label="Comentário (Opcional)"
+                          id="pn4"
+                          placeholder=""
+                          className="font-semibold font-[poppins] w-full"
+                        />
+                      </div>
+                      {/* Bouton directement sous le champ "Competência" */}
+                      <div className="flex items-end justify-end col-span-4 mt-8">
+                        <CustomButton />
                       </div>
                     </div>
                   </Card>
                 </div>
+
                 <div className="h-[65vh] custom-scrollbar lg:col-span-12 col-span-12">
                   <Card className="border border-[#CACACA] rounded-[10px] bg-white">
-                    <AnalyticTable data={ComptabilTableData} screen="send" />
+                    <AnalyticTable
+                      data={ComptabilTableData}
+                      title="Historico dos arquivos enviados"
+                      screen="send"
+                    />
                   </Card>
                 </div>
               </div>
@@ -286,14 +302,21 @@ const Dashboard = () => {
             {/* Tributario */}
             <Tab.Panel>
               <div className="grid grid-cols-12 gap-5">
+                <div className="lg:col-span-4 col-span-12 h-full">
+                  <Card className="h-full bg-white border border-[#CACACA] rounded-[10px]">
+                    <RecentActivity type="tributario" />
+                  </Card>
+                </div>
+
                 <div className="lg:col-span-8 col-span-12">
                   <Card className="border border-[#CACACA] rounded-[10px] bg-white">
-                    <div class="grid grid-cols-12 gap-5">
-                      <div className="md:col-span-8 col-span-12  space-y-4">
+                    <div className="grid grid-cols-12 gap-5">
+                      {/* Colonne principale pour Categoria do arquivo et l'upload */}
+                      <div className="md:col-span-8 col-span-12 space-y-4">
                         <div>
                           <label
-                            htmlFor=" hh"
-                            className="font-semibold font-[poppins] form-label "
+                            htmlFor="categoria"
+                            className="font-semibold font-[poppins] form-label"
                           >
                             Categoria do arquivo
                           </label>
@@ -303,7 +326,7 @@ const Dashboard = () => {
                             defaultValue={categories[0]}
                             options={categories}
                             styles={categories}
-                            id="hh"
+                            id="categoria"
                           />
                         </div>
                         <Fileinput
@@ -312,17 +335,14 @@ const Dashboard = () => {
                           selectedFile={selectedFile}
                           onChange={handleFileChange}
                         />
-                        <Textarea
-                          label="Comentário (Opcional)"
-                          id="pn4"
-                          placeholder=""
-                        />
                       </div>
+
+                      {/* Champ Competência aligné à droite */}
                       <div className="md:col-span-4 col-span-12 space-y-4">
                         <div>
                           <label
-                            htmlFor=" hh"
-                            className="font-semibold font-[poppins] form-label "
+                            htmlFor="competencia"
+                            className="font-semibold font-[poppins] form-label"
                           >
                             Competência
                           </label>
@@ -332,21 +352,35 @@ const Dashboard = () => {
                             defaultValue={furits1[0]}
                             options={furits1}
                             styles={styles}
-                            id="hh"
+                            id="competencia"
                           />
                         </div>
+                      </div>
+
+                      {/* Champ de commentaire occupant toute la largeur */}
+                      <div className="col-span-8">
+                        <Textarea
+                          label="Comentário (Opcional)"
+                          id="pn4"
+                          placeholder=""
+                          className="font-semibold font-[poppins] w-full"
+                        />
+                      </div>
+
+                      {/* Bouton sous le commentaire */}
+                      <div className="flex items-end justify-end col-span-4 mt-8">
+                        <CustomButton />
                       </div>
                     </div>
                   </Card>
                 </div>
-                <div className="lg:col-span-4 col-span-12 h-full">
-                  <Card className="h-full bg-white border border-[#CACACA] rounded-[10px]">
-                    <RecentActivity type="tributario" />
-                  </Card>
-                </div>
+
                 <div className="lg:col-span-12 col-span-12">
                   <Card className="border border-[#CACACA] rounded-[10px] bg-white">
-                    <AnalyticTable data={TributarioTableData} />
+                    <AnalyticTable
+                      title={"Historico dos arquivos enviados"}
+                      data={TributarioTableData}
+                    />
                   </Card>
                 </div>
               </div>
@@ -397,7 +431,11 @@ const Dashboard = () => {
                 </div> */}
                 <div className="lg:col-span-12 col-span-12">
                   <Card className="border border-[#CACACA] rounded-[10px] bg-white">
-                    <AnalyticTable type="pessoal" data={TributarioTableData} />
+                    <AnalyticTable
+                      title="Historico dos arquivos enviados"
+                      type="pessoal"
+                      data={TributarioTableData}
+                    />
                   </Card>
                 </div>
               </div>

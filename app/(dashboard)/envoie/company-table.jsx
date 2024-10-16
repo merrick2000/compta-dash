@@ -18,13 +18,14 @@ import { Menu } from "@headlessui/react";
 import useWidth from "@/hooks/useWidth";
 import { useDispatch, useSelector } from "react-redux";
 
-const AnalyticTable = ({ data, type, screen, tableColumns }) => {
+const AnalyticTable = ({ data, type, screen, tableColumns, title }) => {
   return (
     <>
       <DetailsTable
         tableColumns={tableColumns}
         type={type}
         rows={data ? data : []}
+        tableTitle={title}
       />
     </>
   );
@@ -107,7 +108,13 @@ const TableHeader = ({ onChange }) => {
   );
 };
 
-export const DetailsTable = ({ rows, type, screen, tableColumns }) => {
+export const DetailsTable = ({
+  rows,
+  type,
+  screen,
+  tableColumns,
+  tableTitle,
+}) => {
   const columns =
     tableColumns && tableColumns.length > 0
       ? tableColumns
@@ -173,7 +180,11 @@ export const DetailsTable = ({ rows, type, screen, tableColumns }) => {
     <Card title="">
       <div className="-mx-6">
         <div className="inline-block min-w-full align-middle">
-          <div className="flex justify-end mb-5">
+          <div className="flex justify-between items-center ml-[2%] mr-[5%] mb-5">
+            <span className="font-[inter] font-semibold text-xl ">
+              {" "}
+              {tableTitle ?? "Historico"}{" "}
+            </span>
             <TableHeader onChange={() => console.log("change")} />
           </div>
           <div className="overflow-hidden">

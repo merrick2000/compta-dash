@@ -1,6 +1,6 @@
-import React from "react";
+// import React from "react";
 // import { ChevronDown, Edit } from "lucide-react";
-import Icon from "@/components/ui/Icon";
+// import Icon from "@/components/ui/Icon";
 
 const CompanyInformationPage = () => {
   return (
@@ -283,7 +283,7 @@ const CompanyInformationPage = () => {
                     Contato: (11) 7777-7777
                   </p>
                 </div>
-                <button>{/* <Edit size={16} /> */}</button>
+                <button>{/* <E size={16} /> */}</button>
               </div>
             )
           )}
