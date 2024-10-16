@@ -52,13 +52,16 @@ const RecentActivity = ({ type }) => {
   return (
     <div>
       <div className="mb-4">
-        <h3 className="text-lg font-medium "> Arquivos pendentes </h3>
+        <h3 className="text-lg font-bold font-[poppins] ">
+          {" "}
+          Arquivos pendentes{" "}
+        </h3>
       </div>
       <div className="h-full overflow-y-auto">
         <ul className="list-item space-y-3 h-full overflow-x-auto">
           {data.map((item, i) => (
             <li
-              className="flex items-center space-x-3 rtl:space-x-reverse bg-[#E7E7E7] rounded-lg dark:border-slate-700 last:border-b-0 p-2"
+              className="flex items-center space-x-3 rtl:space-x-reverse bg-[#E7E7E7] rounded-full dark:border-slate-700 last:border-b-0 p-2"
               key={i}
             >
               <div className="text-start overflow-hidden text-ellipsis whitespace-nowrap max-w-[63%]">
