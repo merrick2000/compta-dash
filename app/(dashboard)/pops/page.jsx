@@ -283,7 +283,7 @@ const CompanyInformationPage = () => {
                     Contato: (11) 7777-7777
                   </p>
                 </div>
-                <button>{/* <Edit size={16} /> */}</button>
+                <button>{/* <E size={16} /> */}</button>
               </div>
             )
           )}
