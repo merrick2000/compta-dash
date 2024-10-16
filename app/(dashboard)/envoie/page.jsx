@@ -390,45 +390,24 @@ const Dashboard = () => {
               <div className="grid grid-cols-12 gap-5">
                 <div className="col-span-12">
                   <Text className="text-lg font-bold">
-                    Relatório mensal de pontos dos funcionários | Competência:
-                    &nbsp;
+                    Relatório mensal de pontos dos funcionários |
+                    Competência:&nbsp;
                   </Text>
                   <Text>Nov/2024</Text>
+
                   {/* File upload dropzone */}
-                  <Card className=" bg-white border-dashed border border-secondary-500 rounded-[10px]">
-                    {/* <div className="h-full w-[90%] inline-block text-center space-y-4">
-                      <div className="flex flex-col items-center justify-center">
-                        <Icon
-                          icon="bi:cloud-plus"
-                          className="text-gray-300"
-                          width={150}
-                          height={150}
-                        />
-                        <span className="text-gray-500">
-                          Solte arquivo aqui ou clique para fazer upload
-                        </span>
-                      </div>
-                    </div> */}
+                  <Card className="bg-white border-dashed border border-secondary-500 rounded-[10px] relative">
                     <div className="inline-block h-full w-[93%]">
-                      <DropZone
-                        description={
-                          "Solte arquivo aqui ou clique para fazer upload"
-                        }
-                      ></DropZone>
+                      <DropZone description="Solte arquivo aqui ou clique para fazer upload"></DropZone>
                     </div>
 
-                    <div className="inline-block absolute top-[40%] ">
+                    {/* Placer le bouton en bas à droite du Dropzone */}
+                    <div className="flex justify-end mt-4 pr-4">
                       <CustomButton />
                     </div>
                   </Card>
-
-                  {/* File upload dropzone */}
                 </div>
-                {/* <div className="lg:col-span-4 col-span-12 h-full">
-                  <Card className="h-full bg-white">
-                    <RecentActivity type="tributario" />
-                  </Card>
-                </div> */}
+
                 <div className="lg:col-span-12 col-span-12">
                   <Card className="border border-[#CACACA] rounded-[10px] bg-white">
                     <AnalyticTable
