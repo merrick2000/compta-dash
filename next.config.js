@@ -11,6 +11,9 @@ const nextConfig = {
   experimental: {
     appDir: true,
   },
+  images: {
+    domains: ["via.placeholder.com"],
+  },
   // Configuration du proxy (si nécessaire)
   async rewrites() {
     return [

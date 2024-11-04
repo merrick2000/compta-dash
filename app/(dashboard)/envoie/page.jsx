@@ -230,9 +230,9 @@ const Dashboard = () => {
                           <div>
                             <label
                               htmlFor="hh"
-                              className="font-bold font-[poppins] form-label"
+                              className="font-bold form-label"
                             >
-                              Arquivo A Enviar
+                              Arquivo a Enviar
                             </label>
                             <Select
                               className="react-select"
@@ -246,6 +246,7 @@ const Dashboard = () => {
                           <Fileinput
                             name="basic"
                             placeholder="arraste e solte o PDF aqui..."
+                            label="Selecionar o arquivo"
                             selectedFile={selectedFile}
                             onChange={handleFileChange}
                           />
@@ -256,7 +257,7 @@ const Dashboard = () => {
                         <div>
                           <label
                             htmlFor="competencia"
-                            className="font-semibold font-[poppins] form-label"
+                            className="font-semibold form-label"
                           >
                             Competência
                           </label>
@@ -277,7 +278,7 @@ const Dashboard = () => {
                           label="Comentário (Opcional)"
                           id="pn4"
                           placeholder=""
-                          className="font-semibold font-[poppins] w-full"
+                          className="font-semibold w-full"
                         />
                       </div>
                       {/* Bouton directement sous le champ "Competência" */}
@@ -316,7 +317,7 @@ const Dashboard = () => {
                         <div>
                           <label
                             htmlFor="categoria"
-                            className="font-semibold font-[poppins] form-label"
+                            className="font-semibold form-label"
                           >
                             Categoria do arquivo
                           </label>
@@ -342,7 +343,7 @@ const Dashboard = () => {
                         <div>
                           <label
                             htmlFor="competencia"
-                            className="font-semibold font-[poppins] form-label"
+                            className="font-semibold form-label"
                           >
                             Competência
                           </label>
@@ -363,7 +364,7 @@ const Dashboard = () => {
                           label="Comentário (Opcional)"
                           id="pn4"
                           placeholder=""
-                          className="font-semibold font-[poppins] w-full"
+                          className="font-semibold w-full"
                         />
                       </div>
 

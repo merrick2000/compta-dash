@@ -181,7 +181,7 @@ export const DetailsTable = ({
       <div className="-mx-6">
         <div className="inline-block min-w-full align-middle">
           <div className="flex justify-between items-center ml-[2%] mr-[5%] mb-5">
-            <span className="font-[inter] font-semibold text-xl ">
+            <span className="font-bold text-xl ">
               {" "}
               {tableTitle ?? "Historico"}{" "}
             </span>
@@ -196,14 +196,18 @@ export const DetailsTable = ({
                       return null;
                     }
                     return (
-                      <th key={i} scope="col" className="table-th">
+                      <th
+                        key={i}
+                        scope="col"
+                        className="table-th font-semibold"
+                      >
                         {column.label}
                       </th>
                     );
                   })}
                 </tr>
               </thead>
-              <tbody className="bg-white divide-y divide-slate-100 dark:bg-slate-800 dark:divide-slate-700">
+              <tbody className="bg-white divide-y divide-slate-100 dark:bg-slate-800 dark:divide-slate-700 font-roboto ">
                 {tableCells}
               </tbody>
             </table>

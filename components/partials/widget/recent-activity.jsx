@@ -52,10 +52,7 @@ const RecentActivity = ({ type }) => {
   return (
     <div>
       <div className="mb-4">
-        <h3 className="text-lg font-bold font-[poppins] ">
-          {" "}
-          Arquivos pendentes{" "}
-        </h3>
+        <h3 className="font-bold form-label"> Arquivos pendentes </h3>
       </div>
       <div className="h-full overflow-y-auto">
         <ul className="list-item space-y-3 h-full overflow-x-auto">
